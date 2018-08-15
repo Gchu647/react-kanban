@@ -9,7 +9,11 @@ class Kanban extends Component {
     super(props)
 
     this.state = {
-      cards: [],
+      cards: [
+        {title: 'task1', body: 'Just do it', priority_id: 1, status_id: 1, created_by: 1, assigned_to: 2},
+        {title: 'task2', body: 'Just do it', priority_id: 1, status_id: 1, created_by: 1, assigned_to: 2},
+        {title: 'task3', body: 'Just do it', priority_id: 1, status_id: 1, created_by: 1, assigned_to: 2},
+      ],
     }
   }
 
@@ -23,7 +27,7 @@ class Kanban extends Component {
         </header>
 
         <div className="Kanban-body">
-          <Queue />
+          <Queue cards={ this.state.cards } />
           <Progress />
           <Done />
         </div>

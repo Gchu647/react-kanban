@@ -3,16 +3,34 @@ import logo from '../../logo.svg';
 import './Kanban.css';
 
 class Kanban extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      cards: [],
+    }
+  }
+
+
+
   render() {
     return (
       <div className="Kanban">
         <header className="Kanban-header">
-          <img src={logo} className="Kanban-logo" alt="logo" />
-          <h1 className="Kanban-title">Welcome to React</h1>
+          <p className="Kanban-title">KANBAN</p>
         </header>
-        <p className="Kanban-intro">
-          To get started, edit <code>src/Kanban.js</code> and save to reload.
-        </p>
+
+        <div className="Kanban-body">
+          <div className="queque">
+            <p>IN QUEQUE</p>
+          </div>
+          <div className="progress">
+            <p>IN PROGRESS</p>
+          </div>
+          <div className="done">
+          <p>DONE</p>
+          </div>
+        </div>
       </div>
     );
   }

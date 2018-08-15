@@ -1,28 +1,27 @@
 .Kanban {
-  text-align: center;
-}
-
-.Kanban-logo {
-  animation: Kanban-logo-spin infinite 20s linear;
-  height: 80px;
+  font-family: 'Lato', sans-serif;
 }
 
 .Kanban-header {
+  text-align: left;
   background-color: #222;
-  height: 150px;
   padding: 20px;
   color: white;
 }
 
 .Kanban-title {
-  font-size: 1.5em;
+  font-size: 18px;
 }
 
-.Kanban-intro {
-  font-size: large;
+.Kanban-body {
+  display: flex;
 }
 
-@keyframes Kanban-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.queque, .progress, .done {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center; 
+  border: solid 1px #222;
+  width: 33%;
+  height: 100%;
 }

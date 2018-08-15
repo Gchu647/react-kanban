@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import logo from '../../logo.svg';
 import './Kanban.css';
+import Queue from '../Queue';
+import Progress from '../Progress';
+import Done from '../Done';
 
 class Kanban extends Component {
   constructor(props) {
@@ -21,15 +23,9 @@ class Kanban extends Component {
         </header>
 
         <div className="Kanban-body">
-          <div className="queque">
-            <p>IN QUEQUE</p>
-          </div>
-          <div className="progress">
-            <p>IN PROGRESS</p>
-          </div>
-          <div className="done">
-          <p>DONE</p>
-          </div>
+          <Queue />
+          <Progress />
+          <Done />
         </div>
       </div>
     );

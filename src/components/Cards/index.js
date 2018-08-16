@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Cards = props => {
+const Cards = cards => {
 
-  console.log(props);
+  console.log(cards);
   return (
     <div className="cards">
-      <p>Title: {props.title}</p>
-      <p>Priority: </p>
-      <p>Created by: </p>
-      <p>Assigned to: </p>
+      <p>Title: {cards.title}</p>
+      <p>Priority: {cards.priority}</p>
+      <p>Created by: {cards.createdBy}</p>
+      <p>Assigned to: {cards.assignedTo}</p>
     </div>
   )
 }

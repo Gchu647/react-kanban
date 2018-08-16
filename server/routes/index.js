@@ -5,7 +5,7 @@ const Priority = require('../db/models/Priority');
 const Status = require('../db/models/Status');
 const User = require('../db/models/User');
 
-router.get('/', (req, res) => {
+router.get('/cards', (req, res) => {
   return Card.fetchAll({
     withRelated: ['priority', 'status', 'createdBy', 'assignedTo']
   })

@@ -16,9 +16,10 @@ class Kanban extends Component {
 
 
   componentDidMount() {
-    axios.get('/api')
+    axios.get('/api/cards')
       .then( response => {
-        console.log(JSON.stringify(response.data));
+        // console.log(JSON.stringify(response.data));
+        this.setState({ cards: response.data})
       })
       .catch( err => console.log(err));
   }
@@ -31,7 +32,7 @@ class Kanban extends Component {
         </header>
 
         <div className="Kanban-body">
-          <Queue />
+          <Queue cards={this.state.cards} />
           <Progress />
           <Done />
         </div>
@@ -41,5 +42,3 @@ class Kanban extends Component {
 }
 
 export default Kanban;
-
-{/* <Queue cards={ this.state.cards } /> */}

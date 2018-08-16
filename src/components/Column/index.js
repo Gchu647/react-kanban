@@ -1,12 +1,12 @@
 import React from 'react';
 import Cards from '../Cards';
 
-const Queue = props => {
+const Column = props => {
 
   console.log(props);
   return (
-    <div className="queue">
-       <div className="queue-header">IN QUEUE</div>
+    <div className="Column">
+       <div className="Column-header">IN QUEUE</div>
        {
          props.cards.map( cards => {
           return <Cards 
@@ -22,4 +22,4 @@ const Queue = props => {
   )
 }
 
-export default Queue;
+export default Column;

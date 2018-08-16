@@ -17,7 +17,7 @@
   display: flex;
 }
 
-.queue, .progress, .done {
+.Column, .progress, .done {
   display: flex;
   flex-flow: row wrap;
   justify-content: center; 
@@ -26,11 +26,11 @@
   height: 750px;
 }
 
-.queue {
+.Column {
   border-right: solid 1px #222;
 }
 
-.queue-header {
+.Column-header {
   margin: 10px;
 }
 

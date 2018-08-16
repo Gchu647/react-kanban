@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Kanban.css';
 import axios from 'axios';
-import Queue from '../Queue';
+import Column from '../Column';
 import Progress from '../Progress';
 import Done from '../Done';
 
@@ -32,7 +32,7 @@ class Kanban extends Component {
         </header>
 
         <div className="Kanban-body">
-          <Queue cards={this.state.cards} />
+          <Column cards={this.state.cards} />
           <Progress />
           <Done />
         </div>

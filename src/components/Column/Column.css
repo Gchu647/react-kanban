@@ -1,0 +1,20 @@
+.queue, .progress, .done {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center; 
+  align-content: flex-start;
+  width: 33%;
+  height: 750px;
+}
+
+.queue {
+  border-right: solid 1px #222;
+}
+
+.column-header {
+  margin: 10px;
+}
+
+.done {
+  border-left: solid 1px #222;
+}

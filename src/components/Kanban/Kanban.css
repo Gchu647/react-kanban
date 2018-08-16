@@ -16,32 +16,3 @@
 .Kanban-body {
   display: flex;
 }
-
-.Column, .progress, .done {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center; 
-  align-content: flex-start;
-  width: 33%;
-  height: 750px;
-}
-
-.Column {
-  border-right: solid 1px #222;
-}
-
-.Column-header {
-  margin: 10px;
-}
-
-.done {
-  border-left: solid 1px #222;
-}
-
-.cards {
- width: 90%;
- height: 150px;
- border: solid 1px orangered;
- padding: 5px;
- margin-bottom: 5px;
-}

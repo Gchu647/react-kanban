@@ -1,12 +1,13 @@
 import React from 'react';
 import Cards from '../Cards';
+import'./Column.css';
 
 const Column = props => {
 
   console.log(props);
   return (
-    <div className="Column">
-       <div className="Column-header">IN QUEUE</div>
+    <div className={props.columnName}>
+       <div className="column-header">{props.columnHeader}</div>
        {
          props.cards.map( cards => {
           return <Cards 

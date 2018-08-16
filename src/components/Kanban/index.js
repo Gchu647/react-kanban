@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './Kanban.css';
 import axios from 'axios';
 import Column from '../Column';
-import Progress from '../Progress';
-import Done from '../Done';
 
 class Kanban extends Component {
   constructor(props) {
@@ -32,9 +30,22 @@ class Kanban extends Component {
         </header>
 
         <div className="Kanban-body">
-          <Column cards={this.state.cards} />
-          <Progress />
-          <Done />
+          <Column 
+            cards={this.state.cards}
+            columnName="queue"
+            columnHeader="IN QUEUE"
+            // columnBody="queue-body" 
+          />
+          <Column 
+            cards={[]}
+            columnName="progress"
+            columnHeader="IN PROGRESS"
+          />
+          <Column 
+            cards={[]}
+            columnName="done"
+            columnHeader="DONE"
+          />
         </div>
       </div>
     );

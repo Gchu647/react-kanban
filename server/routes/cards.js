@@ -5,6 +5,7 @@ const Priority = require('../db/models/Priority');
 const Status = require('../db/models/Status');
 const User = require('../db/models/User');
 
+// fetches all the cards from db using bookshelf
 router.get('/', (req, res) => {
   return Card.fetchAll({
     withRelated: ['priority', 'status', 'createdBy', 'assignedTo']
@@ -17,15 +18,34 @@ router.get('/', (req, res) => {
     })
 })
 
-// WORKING on later
+// creating a new card and putting it into database
 router.post('/', (req, res) => {
-  const cardTitle = req.body.cardTitle;
-  const priorityName = req.body.priorityName;
-  const createdBy = req.body.createdBy;
-  const assignedTo = req.body.createdBy ? req.body.createdBy : null;
+  const title = req.body.title.trim();
+  const body = req.body.body.trim();
+  const priority_id = parseInt(req.body.priority_id);
+  const created_by = parseInt(req.body.created_by);
+  const assigned_to = parseInt(req.body.assigned_to);
 
-  console.log('Posting in body', req.body);
-  res.end();
+  //Make sure no empty strings
+  const cardInput = {
+    title: title ? title : null,
+    body: body ? body:null,
+    priority_id: priority_id ? priority_id : null,
+    created_by: created_by ? created_by : null,
+    assigned_to: assigned_to ? assigned_to : null,
+    status_id: 1
+  }
+
+  console.log('Posting in body', cardInput);
+
+  return new Card(cardInput)
+    .save()
+    .then(card => {
+      res.send('we posted card!');
+    })
+    .catch(err => {
+      res.status(400).send(err.message);
+    });
 })
 
 module.exports = router;

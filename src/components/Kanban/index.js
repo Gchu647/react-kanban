@@ -34,7 +34,7 @@ class Kanban extends Component {
 
         <div className="Kanban-body">
           <Column 
-            cards={this.state.cards} //changed state to props
+            cards={this.props.cards} //changed state to props
             columnName="queue"
             columnHeader="IN QUEUE"
             // columnBody="queue-body" 
@@ -57,7 +57,7 @@ class Kanban extends Component {
 
 const mapStateToProps = state => {
   return {
-    cards: state.cardsList
+    cards: state // I don't need state.cardsList, because my reducer export is the state
   }
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Kanban.css';
 import axios from 'axios';
-import Column from '../Column';
+import Board from '../Board';
 import { connect } from 'react-redux';
 import { loadCards } from '../../actions';
 
@@ -30,24 +30,8 @@ class Kanban extends Component {
           <p className="Kanban-title">KANBAN</p>
         </header>
 
-        <div className="Kanban-body">
-          <Column 
-            cards={this.props.cards} //changed state to props
-            columnName="queue"
-            columnHeader="IN QUEUE"
-            // columnBody="queue-body" 
-          />
-          <Column 
-            cards={[]}
-            columnName="progress"
-            columnHeader="IN PROGRESS"
-          />
-          <Column 
-            cards={[]}
-            columnName="done"
-            columnHeader="DONE"
-          />
-        </div>
+        <Board cards={ this.props.cards }/>
+        
       </div>
     );
   }

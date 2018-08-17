@@ -3,14 +3,12 @@ import Column from '../Column';
 import './Board.css'
 
 const Board = ({ cardsList }) => {
-  console.log("Board cards: ", cardsList);  
-
-  // console.log(filterByStatus(cardsList, "queue"));
+  // console.log("Board cards: ", cardsList);  
 
   return (
     <div className="Kanban-board">
     <Column 
-      cards={filterByStatus(cardsList, "queue")} //this.props.cards
+      cards={filterByStatus(cardsList, "queue")}
       columnName="queue"
       columnHeader="IN QUEUE"
       // columnBody="queue-body" 

@@ -3,13 +3,13 @@ import Cards from '../Cards';
 import'./Column.css';
 
 const Column = props => {
+  const sortedCards = prioritySort(props.cards);
 
-  // console.log('Column Props: ', props);
   return (
     <div className={props.columnName}>
        <div className="column-header">{props.columnHeader}</div>
        {
-         props.cards.map( cards => {
+         sortedCards.map( cards => {
           return <Cards 
             key={cards.id} 
             title={cards.title}
@@ -22,6 +22,15 @@ const Column = props => {
        }
     </div>
   )
+}
+
+// Sort the cards based on priority
+function prioritySort(cards) {
+  return cards.sort(function(a, b) {
+    a = a.priority_id;
+    b = b.priority_id;
+    return a - b;
+  })
 }
 
 export default Column;

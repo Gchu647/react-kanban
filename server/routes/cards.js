@@ -18,8 +18,14 @@ router.get('/', (req, res) => {
 })
 
 // WORKING on later
-// router.post('/', (req, res) => {
+router.post('/', (req, res) => {
+  const cardTitle = req.body.cardTitle;
+  const priorityName = req.body.priorityName;
+  const createdBy = req.body.createdBy;
+  const assignedTo = req.body.createdBy ? req.body.createdBy : null;
 
-// })
+  console.log('Posting in body', req.body);
+  res.end();
+})
 
 module.exports = router;

@@ -2,29 +2,51 @@ import React from 'react';
 import Column from '../Column';
 import './Board.css'
 
-const Board = props => {
-  console.log("Board props: ", props);  
+const Board = ({ cardsList }) => {
+  console.log("Board cards: ", cardsList);  
+
+  // console.log(filterByStatus(cardsList, "queue"));
 
   return (
     <div className="Kanban-board">
     <Column 
-      cards={[]} //this.props.cards
+      cards={filterByStatus(cardsList, "queue")} //this.props.cards
       columnName="queue"
       columnHeader="IN QUEUE"
       // columnBody="queue-body" 
     />
     <Column 
-      cards={[]}
+      cards={filterByStatus(cardsList, "progress")} 
       columnName="progress"
       columnHeader="IN PROGRESS"
     />
     <Column 
-      cards={[]}
+      cards={filterByStatus(cardsList, "done")} 
       columnName="done"
       columnHeader="DONE"
     />
   </div>
   )
+}
+
+// decides which column the cards goes in
+function filterByStatus(cardsList, columnName) {
+  switch (columnName) {
+    case 'queue':
+      return cardsList.filter((card) =>{
+        return card.status.rank === 1;
+      });
+    case 'progress':
+      return cardsList.filter((card) =>{
+        return card.status.rank === 2;
+      });
+    case 'done':
+      return cardsList.filter((card) =>{
+        return card.status.rank === 3;
+      });
+    default:
+      break;
+  }
 }
 
 export default Board;

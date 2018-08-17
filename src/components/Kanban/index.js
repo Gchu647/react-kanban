@@ -30,8 +30,8 @@ class Kanban extends Component {
           <p className="Kanban-title">KANBAN</p>
         </header>
 
-        <Board cards={ this.props.cards }/>
-        
+        <Board cardsList ={ this.props.cards }/>
+
       </div>
     );
   }

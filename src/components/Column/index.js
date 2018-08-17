@@ -4,7 +4,7 @@ import'./Column.css';
 
 const Column = props => {
 
-  console.log('Column Props: ', props);
+  // console.log('Column Props: ', props);
   return (
     <div className={props.columnName}>
        <div className="column-header">{props.columnHeader}</div>
@@ -13,6 +13,7 @@ const Column = props => {
           return <Cards 
             key={cards.id} 
             title={cards.title}
+            status={cards.status.rank}
             priority={cards.priority.name}
             createdBy={cards.createdBy.first_name}
             assignedTo={cards.assignedTo.first_name}

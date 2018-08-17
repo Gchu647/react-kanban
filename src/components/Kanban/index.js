@@ -18,14 +18,12 @@ class Kanban extends Component {
     axios.get('/api/cards')
       .then( response => {
         // console.log(JSON.stringify(response.data));
-        // this.setState({ cards: response.data});
         this.props.loadCards(response.data);
       })
       .catch( err => console.log(err));
   }
 
   render() {
-    console.log('Render props in Kanban: ',this.props);
     return (
       <div className="Kanban">
         <header className="Kanban-header">

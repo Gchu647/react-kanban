@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './Kanban.css';
-import axios from 'axios';
-import Board from '../Board';
 import { connect } from 'react-redux';
 import { loadCards } from '../../actions';
+import axios from 'axios';
+import './Kanban.css';
+import Board from '../Board';
+import NewCardForm from '../NewCardForm';
 
 class Kanban extends Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class Kanban extends Component {
         </header>
 
         <Board cardsList ={ this.props.cards }/>
-
+        <br/>
+        <NewCardForm />
       </div>
     );
   }

@@ -1,0 +1,10 @@
+.new-card-form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+label {
+  margin-left: 10px;
+  margin-right: 30px;
+}

@@ -4,7 +4,7 @@ import'./Column.css';
 
 const Column = props => {
 
-  console.log(props);
+  console.log('Column Props: ', props);
   return (
     <div className={props.columnName}>
        <div className="column-header">{props.columnHeader}</div>

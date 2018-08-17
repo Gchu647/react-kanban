@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Kanban.css';
 import axios from 'axios';
 import Column from '../Column';
+import { connect } from 'react-redux';
+import { loadCards } from '../../actions';
 
 class Kanban extends Component {
   constructor(props) {
@@ -12,17 +14,18 @@ class Kanban extends Component {
     }
   }
 
-
   componentDidMount() {
     axios.get('/api/cards')
       .then( response => {
         // console.log(JSON.stringify(response.data));
-        this.setState({ cards: response.data})
+        // this.setState({ cards: response.data});
+        this.props.loadCards(response.data);
       })
       .catch( err => console.log(err));
   }
 
   render() {
+    console.log('Render props in Kanban: ',this.props);
     return (
       <div className="Kanban">
         <header className="Kanban-header">
@@ -31,7 +34,7 @@ class Kanban extends Component {
 
         <div className="Kanban-body">
           <Column 
-            cards={this.state.cards}
+            cards={this.state.cards} //changed state to props
             columnName="queue"
             columnHeader="IN QUEUE"
             // columnBody="queue-body" 
@@ -52,4 +55,18 @@ class Kanban extends Component {
   }
 }
 
-export default Kanban;
+const mapStateToProps = state => {
+  return {
+    cards: state.cardsList
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadCards: (cards) => {
+      dispatch(loadCards(cards));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Kanban);

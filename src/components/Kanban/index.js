@@ -12,7 +12,15 @@ class Kanban extends Component {
 
     this.state = {
       cards: [],
+      titleInput: '',
+      bodyInput: '',
+      priorityId: '',
+      createdBy: '',
+      assignedTo: '',
     }
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.addNewCard = this.addNewCard.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +32,67 @@ class Kanban extends Component {
       .catch( err => console.log(err));
   }
 
+  handleInputChange(event) {
+    console.log('change this event: ', event.target.value)
+    switch (event.target.name) {
+      case 'title':
+        this.setState({ titleInput: event.target.value })
+        break;
+      case 'body':
+        this.setState({ bodyInput: event.target.value })
+        break;
+      case 'priorityId':
+        this.setState({ priorityId: event.target.value })
+        break;
+      case 'createdBy':
+        this.setState({ createdBy: event.target.value })
+        break;
+      case 'assignedTo':
+        this.setState({ assignedTo: event.target.value })
+        break;
+      default:
+        break;
+    }
+  }
+
+  addNewCard() {
+    const data = {};
+    data.title = this.state.titleInput;
+    data.body = this.state.bodyInput;
+    data.priority_id = this.state.priorityId;
+    data.created_by = this.state.createdBy;
+    data.assigned_to = this.state.assignedTo;
+
+    console.log('add new cards: ', data);
+
+    // this.setState(prevState => {
+    //   return {
+    //     cards: prevState.cards.concat(data),
+    //     titleInput: '',
+    //     bodyInput: '',
+    //     priorityId: '',
+    //     createdBy: '',
+    //     assignedTo: '',
+    //   }})
+
+  
+    axios.post('/api/cards', data)
+      .then( response => {
+        const card = response.data;
+        this.setState(prevState => {
+          return {
+            cards: prevState.cards.concat(card),
+            titleInput: '',
+            bodyInput: '',
+            priorityId: '',
+            createdBy: '',
+            assignedTo: '',
+          }
+        })
+      })
+
+  }
+
   render() {
     return (
       <div className="Kanban">
@@ -33,7 +102,15 @@ class Kanban extends Component {
 
         <Board cardsList ={ this.props.cards }/>
         <br/>
-        <NewCardForm />
+        <NewCardForm // switch to props input later
+          titleInput={ this.state.titleInput }
+          bodyInput={ this.state.bodyInput }
+          priorityId={ this.state.priorityId }
+          createdBy={ this.state.createdBy }
+          assignedTo={ this.state.assignedTo }
+          changeHandler={ this.handleInputChange }
+          formHandler={ this.addNewCard}
+        />
       </div>
     );
   }

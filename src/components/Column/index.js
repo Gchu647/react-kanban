@@ -16,7 +16,7 @@ const Column = props => {
             status={cards.status.rank}
             priority={cards.priority.name}
             createdBy={cards.createdBy.first_name}
-            assignedTo={cards.assignedTo.first_name}
+            assignedTo={cards.assignedTo ? cards.assignedTo.first_name : ""} // this can be null value
           />
         })
        }

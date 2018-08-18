@@ -2,20 +2,29 @@ import React from 'react';
 import './NewCardForm.css';
 
 const NewCardForm = props => {
+  const { // clean up props value
+    titleInput,
+    bodyInput,
+    priorityId,
+    createdBy,
+    assignedTo,
+    changeHandler,
+    formHandler,
+  } = props;
 
   return(
     <div className = 'new-card-form'>
-      <label htmlFor='title'>
-        Card Title:
-        <input type='text' name ='title' />
+      <label htmlFor='title'>Card Title:
+        <input type='text' name ='title' value={ titleInput } onChange={ changeHandler } />
       </label>
 
       <label htmlFor='body'>Description:
-        <input type='text' name ='body' />
+        <input type='text' name ='body' value={ bodyInput } onChange={ changeHandler }/>
       </label>
 
-      <label htmlFor='priority_id'>Priority:
-        <select name='priority_id'>
+      <label htmlFor='priorityId'>Priority:
+        <select name='priorityId' value={ priorityId } onChange={ changeHandler }>
+          <option value=''>select</option>
           <option value='1'>high</option>
           <option value='2'>blocker</option>
           <option value='3'>medium</option>
@@ -23,8 +32,9 @@ const NewCardForm = props => {
         </select>
       </label>
 
-      <label htmlFor='created_by'>Created By:
-        <select name='created_by'>
+      <label htmlFor='createdBy'>Created By:
+        <select name='createdBy' value={ createdBy } onChange={ changeHandler }>
+        <option value=''>select</option>
           <option value='1'>John</option>
           <option value='2'>James</option>
           <option value='3'>Alan</option>
@@ -33,9 +43,9 @@ const NewCardForm = props => {
         </select>
       </label>
 
-      <label htmlFor='assigned_to'>Assigned To:
-        <select name='assigned_to'>
-          <option value=''>Null</option>
+      <label htmlFor='assignedTo'>Assigned To:
+        <select name='assignedTo' value={ assignedTo } onChange={ changeHandler }>
+          <option value=''>optional</option>
           <option value='1'>John</option>
           <option value='2'>James</option>
           <option value='3'>Alan</option>
@@ -44,7 +54,7 @@ const NewCardForm = props => {
         </select>
       </label>
 
-      <button> Create Card </button>
+      <button onClick={ formHandler }> Create Card </button>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadCards } from '../../actions';
+import { loadCards, addCard } from '../../actions';
 import axios from 'axios';
 import './Kanban.css';
 import Board from '../Board';
@@ -68,9 +68,11 @@ class Kanban extends Component {
       .then( response => {
         console.log('Response from server', response.data);
         const card = response.data;
+        this.props.addCard(card);
+
         this.setState(prevState => {
           return {
-            cards: prevState.cards.concat(card),
+            // cards: prevState.cards.concat(card),
             titleInput: '',
             bodyInput: '',
             priorityId: '',
@@ -115,6 +117,9 @@ const mapDispatchToProps = dispatch => {
   return {
     loadCards: (cards) => {
       dispatch(loadCards(cards));
+    },
+    addCard: (card) => {
+      dispatch(addCard(card))
     }
   }
 }

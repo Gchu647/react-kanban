@@ -41,11 +41,9 @@ router.post('/', (req, res) => {
   return new Card(cardInput)
     .save()
     .then(card => {
-      res.send('we posted card!');
+      res.json(card);
     })
-    .catch(err => {
-      res.status(400).send(err.message);
-    });
+    .catch(err => console.log(err.message));
 })
 
 module.exports = router;

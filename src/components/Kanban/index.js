@@ -26,14 +26,13 @@ class Kanban extends Component {
   componentDidMount() {
     axios.get('/api/cards')
       .then( response => {
-        // console.log(JSON.stringify(response.data));
         this.props.loadCards(response.data);
       })
       .catch( err => console.log(err));
   }
 
   handleInputChange(event) {
-    console.log('change this event: ', event.target.value)
+    // console.log('change this event: ', event.target.value)
     switch (event.target.name) {
       case 'title':
         this.setState({ titleInput: event.target.value })
@@ -63,21 +62,11 @@ class Kanban extends Component {
     data.created_by = this.state.createdBy;
     data.assigned_to = this.state.assignedTo;
 
-    console.log('add new cards: ', data);
-
-    // this.setState(prevState => {
-    //   return {
-    //     cards: prevState.cards.concat(data),
-    //     titleInput: '',
-    //     bodyInput: '',
-    //     priorityId: '',
-    //     createdBy: '',
-    //     assignedTo: '',
-    //   }})
-
+    // console.log('add new cards: ', data);
   
     axios.post('/api/cards', data)
       .then( response => {
+        console.log('Response from server', response.data);
         const card = response.data;
         this.setState(prevState => {
           return {

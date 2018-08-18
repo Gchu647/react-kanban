@@ -4,6 +4,7 @@ import'./Column.css';
 
 const Column = props => {
   const sortedCards = prioritySort(props.cards);
+  let cardEdit = true; // WORKING ON card edit
 
   return (
     <div className={props.columnName}>
@@ -17,6 +18,7 @@ const Column = props => {
             priority={cards.priority.name}
             createdBy={cards.createdBy.first_name}
             assignedTo={cards.assignedTo ? cards.assignedTo.first_name : ""} // this can be null value
+            cardEdit={ cardEdit }
           />
         })
        }

@@ -13,7 +13,7 @@ const Column = props => {
           return <Cards 
             key={cards.id} 
             title={cards.title}
-            status={cards.status.rank}
+            status={cards.status_id}
             priority={cards.priority.name}
             createdBy={cards.createdBy.first_name}
             assignedTo={cards.assignedTo ? cards.assignedTo.first_name : ""} // this can be null value

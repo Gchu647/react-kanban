@@ -40,8 +40,14 @@ router.post('/', (req, res) => {
 
   return new Card(cardInput)
     .save()
-    .then(card => {
-      res.json(card);
+    .then(card => {// need to send card with related
+        console.log('this is server card: ', card);
+
+        return card.refresh({ withRelated: ['priority', 'status', 'createdBy', 'assignedTo']});
+    })
+    .then(newCard => {
+      console.log('This is new card', newCard);
+      return res.json(newCard);
     })
     .catch(err => console.log(err.message));
 })

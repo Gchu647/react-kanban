@@ -32,15 +32,15 @@ function filterByStatus(cardsList, columnName) {
   switch (columnName) {
     case 'queue':
       return cardsList.filter((card) =>{
-        return card.status.rank === 1;
+        return card.status_id === 1;
       });
     case 'progress':
       return cardsList.filter((card) =>{
-        return card.status.rank === 2;
+        return card.status_id === 2;
       });
     case 'done':
       return cardsList.filter((card) =>{
-        return card.status.rank === 3;
+        return card.status_id === 3;
       });
     default:
       break;

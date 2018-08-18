@@ -36,17 +36,43 @@ router.post('/', (req, res) => {
     status_id: 1
   }
 
-  console.log('Posting in body', cardInput);
-
   return new Card(cardInput)
     .save()
-    .then(card => {// need to send card with related
-        console.log('this is server card: ', card);
-
+    .then(card => { // the returned card is a promise model.
+        // this refreshes the page and fetches the card you just saved
         return card.refresh({ withRelated: ['priority', 'status', 'createdBy', 'assignedTo']});
     })
     .then(newCard => {
-      console.log('This is new card', newCard);
+      return res.json(newCard);
+    })
+    .catch(err => console.log(err.message));
+})
+
+// WORKING on editing card information.
+router.put('/:id', (req, res) => {
+  const id = req.params.id;
+  // Need a function to do this for both POST and PUT
+  const title = req.body.title.trim();
+  const body = req.body.body.trim();
+  const priority_id = parseInt(req.body.priority_id);
+  const status_id = parseInt(req.body.status_id);
+  const created_by = parseInt(req.body.created_by);
+  const assigned_to = parseInt(req.body.assigned_to);
+
+  return new Card()
+    .where({ id })
+    .save({
+      'title': title,
+      'body': body,
+      'priority_id': priority_id,
+      'status_id': status_id,
+      'created_by': created_by,
+      'assigned_to': assigned_to
+    }, {'patch': true})
+    .then(card => {
+      return card.refresh({ withRelated: ['priority', 'status', 'createdBy', 'assignedTo']});
+    })
+    .then(newCard => {
       return res.json(newCard);
     })
     .catch(err => console.log(err.message));

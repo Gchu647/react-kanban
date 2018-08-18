@@ -11,7 +11,7 @@ class Kanban extends Component {
     super(props)
 
     this.state = {
-      cards: [],
+      cards: [], // Take this out and see if it breaks.
       titleInput: '',
       bodyInput: '',
       priorityId: '',
@@ -32,7 +32,6 @@ class Kanban extends Component {
   }
 
   handleInputChange(event) {
-    // console.log('change this event: ', event.target.value)
     switch (event.target.name) {
       case 'title':
         this.setState({ titleInput: event.target.value })

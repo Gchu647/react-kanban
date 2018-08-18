@@ -11,6 +11,7 @@ const Cards = ({title, priority, status, createdBy, assignedTo, cardEdit}) => {
         <p>Status: {status} </p>
         {/* <p>Created by: {createdBy}</p>
         <p>Assigned to: {assignedTo}</p> */}
+        <button>Edit</button>
       </div>
     )
   } else {
@@ -58,6 +59,8 @@ const Cards = ({title, priority, status, createdBy, assignedTo, cardEdit}) => {
             <option value='5'>Andy</option>
           </select>
         </label>
+
+        <button>Cancel</button>
       </div>
     )
   }

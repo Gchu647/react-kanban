@@ -6,6 +6,12 @@ const Column = props => {
   const sortedCards = prioritySort(props.cards);
   let cardEdit = true; // WORKING ON card edit
 
+  if(cardEdit) {
+    cardEdit = false;
+  } else {
+    cardEdit = true;
+  }
+
   return (
     <div className={props.columnName}>
        <div className="column-header">{props.columnHeader}</div>

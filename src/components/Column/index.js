@@ -11,7 +11,8 @@ const Column = props => {
        {
          sortedCards.map( cards => {
           return <Cards 
-            key={cards.id} 
+            key={cards.id}
+            cardId={cards.id} 
             title={cards.title}
             status={cards.status_id}
             priority={cards.priority.name}

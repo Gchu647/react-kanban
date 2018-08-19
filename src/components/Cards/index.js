@@ -11,31 +11,25 @@ class Cards extends Component {
       cardForm: 'hide' 
     }
 
+    console.log('Cards_id: ', this.props.cardId); // We have access to card id
     this.showForm = this.showForm.bind(this);
   }
 
   showForm() {
     if(this.state.cardForm === 'show') {
       this.setState({cardForm: 'hide'});
-      console.log('Column: hide');
     } else {
       this.setState({cardForm: 'show'});
-      console.log('Column: show');
     }
   }
 
-  editCard() {
-    const data = {};
-    data.title = this.state.titleInput;
-    data.body = this.state.bodyInput;
-    data.priority_id = this.state.priorityId;
-    data.created_by = this.state.createdBy;
-    data.assigned_to = this.state.assignedTo;
+  deleteCardById() {
+    //WORKING ON THIS
   }
 
   render() {
-  console.log('Cards: ', this.props);
-  let { title, priority, status } = this.props;
+    let { title, priority, status } = this.props;
+
     return(
       // Default card content
       <div className="cards">
@@ -45,6 +39,7 @@ class Cards extends Component {
         {/* <p>Created by: {createdBy}</p>
         <p>Assigned to: {assignedTo}</p> */}
         <button onClick={ this.showForm }>Edit</button>
+        <button onClick={ this.deleteCardById}> Delete</button>
 
         <EditForm title={ title } cardForm={ this.state.cardForm }/>
       </div>

@@ -12,6 +12,16 @@ const EditForm = ({ title, cardForm }) => {
       {/* Missing body input */}
       {/* Missing status */}
 
+       <label htmlFor='statusId'>Status:
+        <select name='statusId' >
+          <option value=''>select</option>
+          <option value='1'>Queue</option>
+          <option value='2'>Progress</option>
+          <option value='3'>Done</option>
+        </select>
+      </label>
+      <br/>
+
       <label htmlFor='priorityId'>Priority:
         <select name='priorityId' >
           <option value=''>select</option>
@@ -46,7 +56,7 @@ const EditForm = ({ title, cardForm }) => {
         </select>
       </label>
 
-      <button>Cancel</button>
+      <button> Submit </button>
     </div>
   )
 }

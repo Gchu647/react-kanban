@@ -11,7 +11,6 @@ class Kanban extends Component {
     super(props)
 
     this.state = {
-      cards: [], // Take this out and see if it breaks.
       titleInput: '',
       bodyInput: '',
       priorityId: '',

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const EditForm = ({ title }) => {
+const EditForm = ({ title, cardForm }) => {
   return (      
-    <div className='hide'>
+    <div className={ cardForm }>
       <hr/>
       <label htmlFor='title'>
         <input type='text' name ='title' value={ title } />

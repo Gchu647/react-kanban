@@ -14,11 +14,11 @@ class Cards extends Component {
   }
 
   showForm() {
-    if(this.state.cardEdit === 'show') {
-      this.setState({cardEdit: 'hide'});
+    if(this.state.cardForm === 'show') {
+      this.setState({cardForm: 'hide'});
       console.log('Column: hide');
     } else {
-      this.setState({cardEdit: 'show'});
+      this.setState({cardForm: 'show'});
       console.log('Column: show');
     }
   }
@@ -34,9 +34,9 @@ class Cards extends Component {
         <p>Status: {status} </p>
         {/* <p>Created by: {createdBy}</p>
         <p>Assigned to: {assignedTo}</p> */}
-        <button>Edit</button>
+        <button onClick={ this.showForm }>Edit</button>
 
-        <EditForm title={ title } />
+        <EditForm title={ title } cardForm={ this.state.cardForm }/>
       </div>
     )
   }

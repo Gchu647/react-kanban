@@ -2,7 +2,7 @@ import React from 'react';
 
 const EditForm = ({ title }) => {
   return (      
-    <div className='edit-form'>
+    <div className='hide'>
       <hr/>
       <label htmlFor='title'>
         <input type='text' name ='title' value={ title } />

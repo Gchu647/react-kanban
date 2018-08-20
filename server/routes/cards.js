@@ -85,17 +85,23 @@ router.delete('/:id', (req, res) => {
 
   console.log('delete got it');
 
-  return new Card()
+  return new Card() // keep temp version of destroyed.
   .where({ id })
-  .destroy()
+  .fetch()
   .then(card => {
-    console.log('We deleted this card', card);
-    res.end();
-  })
-  .then(newCard => {
-    return res.json(newCard);
+    const destroyCard = card;
+    console.log('card fetched! ', destroyCard);
+
+    return new Card()
+    .where({ id })
+    .destroy()
+    .then(card => {
+      console.log('We deleted this card', card);
+      res.json(destroyCard);
+    })
   })
   .catch(err => console.log(err.message));
+
 });
 
 module.exports = router;

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { delCard } from '../../actions';
 import axios from 'axios';
 import EditForm from './EditForm';
 import './Cards.css';
@@ -30,7 +32,7 @@ class Cards extends Component {
     console.log('delete card');
     axios.delete(`/api/cards/${this.props.cardId}`)
       .then( response => {
-        console.log('axios delete', response);
+        console.log('axios delete', response.data);
       })
       .catch( err => console.log(err));
     //WORKING ON THIS
@@ -56,4 +58,18 @@ class Cards extends Component {
   }
 }
 
-export default Cards;
+const mapStateToProps = state => {
+  return {
+    cards: state
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    delCard: (card) => {
+      dispatch(delCard(card));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cards);

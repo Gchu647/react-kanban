@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
     .save()
     .then(card => { // the returned card is a promise model.
         // this refreshes the page and fetches the card you just saved
-        return card.refresh({ withRelated: ['priority', 'status', 'createdBy', 'assignedTo']});
+        return new Card().refresh({ withRelated: ['priority', 'status', 'createdBy', 'assignedTo']});
     })
     .then(newCard => {
       return res.json(newCard);

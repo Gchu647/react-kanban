@@ -3,7 +3,7 @@ import Column from '../Column';
 import './Board.css'
 
 const Board = ({ cardsList }) => {
-  console.log("Board cards: ", cardsList);  
+  // console.log("Board cards: ", cardsList);  
 
   return (
     <div className="Kanban-board">

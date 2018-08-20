@@ -9,9 +9,14 @@ const cardsList = (state = initialState, action) => { // what is the action bein
     case ADD_CARD:
       return [...state, action.card];
     case DEL_CARD:
-      let newState = [state];
-      let index = newState.indexOf(action.card);
-      newState.splice(index, 1);
+      console.log('This is original state: ', [...state]);
+      console.log('this is action.card: ', action.card);
+
+      let newState = state.filter(card => {
+        return card.id !== action.card.id;
+      });
+
+      console.log('Index of NEW state: ', newState);
       
       return newState;
     default:

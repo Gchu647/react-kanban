@@ -29,10 +29,10 @@ class Cards extends Component {
   }
 
   deleteCardById() {
-    console.log('delete card');
     axios.delete(`/api/cards/${this.props.cardId}`)
       .then( response => {
-        console.log('axios delete', response.data);
+        const card = response.data;
+        this.props.delCard(card);
       })
       .catch( err => console.log(err));
     //WORKING ON THIS

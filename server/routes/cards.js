@@ -26,6 +26,8 @@ router.post('/', (req, res) => {
   const created_by = parseInt(req.body.created_by);
   const assigned_to = parseInt(req.body.assigned_to);
 
+  console.log('Posting something');
+
   //Make sure no empty strings
   const cardInput = {
     title: title ? title : null,
@@ -77,5 +79,23 @@ router.put('/:id', (req, res) => {
     })
     .catch(err => console.log(err.message));
 })
+
+router.delete('/:id', (req, res) => {
+  const id = req.params.id;
+
+  console.log('delete got it');
+
+  return new Card()
+  .where({ id })
+  .destroy()
+  .then(card => {
+    console.log('We deleted this card', card);
+    res.end();
+  })
+  .then(newCard => {
+    return res.json(newCard);
+  })
+  .catch(err => console.log(err.message));
+});
 
 module.exports = router;

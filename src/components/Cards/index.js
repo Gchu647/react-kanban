@@ -8,14 +8,17 @@ class Cards extends Component {
     super(props);
 
     this.state = {
-      cardForm: 'hide' 
+      cardForm: 'hide',
+      hi: 'hi'
     }
 
     console.log('Cards_id: ', this.props.cardId); // We have access to card id
     this.showForm = this.showForm.bind(this);
+    this.deleteCardById = this.deleteCardById.bind(this);
   }
 
   showForm() {
+    console.log('show form method', this.state)
     if(this.state.cardForm === 'show') {
       this.setState({cardForm: 'hide'});
     } else {
@@ -24,6 +27,12 @@ class Cards extends Component {
   }
 
   deleteCardById() {
+    console.log('delete card');
+    axios.delete(`/api/cards/${this.props.cardId}`)
+      .then( response => {
+        console.log('axios delete', response);
+      })
+      .catch( err => console.log(err));
     //WORKING ON THIS
   }
 

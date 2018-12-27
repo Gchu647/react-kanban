@@ -1,6 +1,13 @@
 import React from 'react';
 
-const EditForm = ({ title, cardForm }) => {
+const EditForm = props => {
+
+  const {
+    title,
+    cardForm,
+    formHandler
+  } = props;
+
   return (      
     <div className={ cardForm }>
       <hr/>
@@ -56,7 +63,7 @@ const EditForm = ({ title, cardForm }) => {
         </select>
       </label>
 
-      <button> Submit </button>
+      <button onClick={ formHandler }> Submit </button>
     </div>
   )
 }

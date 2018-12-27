@@ -17,6 +17,7 @@ class Cards extends Component {
     console.log('Cards_id: ', this.props.cardId); // We have access to card id
     this.showForm = this.showForm.bind(this);
     this.deleteCardById = this.deleteCardById.bind(this);
+    this.editCardById = this.editCardById.bind(this);
   }
 
   showForm() {
@@ -35,7 +36,10 @@ class Cards extends Component {
         this.props.delCard(card);
       })
       .catch( err => console.log(err));
-    //WORKING ON THIS
+  }
+
+  editCardById() {
+    console.log('Editing form smoke testing!')
   }
 
   render() {
@@ -52,7 +56,11 @@ class Cards extends Component {
         <button onClick={ this.showForm }>Edit</button>
         <button onClick={ this.deleteCardById}> Delete</button>
 
-        <EditForm title={ title } cardForm={ this.state.cardForm }/>
+        <EditForm 
+          title={ title } 
+          cardForm={ this.state.cardForm }
+          formHandler={ this.editCardById }  
+        />
       </div>
     )
   }

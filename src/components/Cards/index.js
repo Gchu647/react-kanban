@@ -71,7 +71,10 @@ class Cards extends Component {
     data.created_by = this.state.createdBy;
     data.assigned_to = this.state.assignedTo;
 
-    console.log('Editing Card: ', data);
+    axios.put(`/api/cards/${this.props.cardId}`, data)
+      .then(response => {
+        console.log('Editing Card: ', response.data);
+      })
   }
 
   render() {

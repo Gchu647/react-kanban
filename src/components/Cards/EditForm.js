@@ -5,22 +5,18 @@ const EditForm = props => {
   const {
     title,
     cardForm,
+    changeHandler,
     formHandler
   } = props;
 
   return (      
     <div className={ cardForm }>
       <hr/>
-      <label htmlFor='title'>
-        <input type='text' name ='title' value={ title } />
-      </label>
-      <br/>
-
       {/* Missing body input */}
       {/* Missing status */}
 
        <label htmlFor='statusId'>Status:
-        <select name='statusId' >
+        <select name='statusId' onChange={changeHandler}>
           <option value=''>select</option>
           <option value='1'>Queue</option>
           <option value='2'>Progress</option>
@@ -30,7 +26,7 @@ const EditForm = props => {
       <br/>
 
       <label htmlFor='priorityId'>Priority:
-        <select name='priorityId' >
+        <select name='priorityId' onChange={changeHandler}>
           <option value=''>select</option>
           <option value='1'>high</option>
           <option value='2'>blocker</option>
@@ -41,7 +37,7 @@ const EditForm = props => {
       <br/>
 
       <label htmlFor='createdBy'>Created By:
-        <select name='createdBy'>
+        <select name='createdBy' onChange={changeHandler}>
         <option value=''>select</option>
           <option value='1'>John</option>
           <option value='2'>James</option>
@@ -53,7 +49,7 @@ const EditForm = props => {
       <br/>
 
       <label htmlFor='assignedTo'>Assigned To:
-        <select name='assignedTo'>
+        <select name='assignedTo' onChange={changeHandler}>
           <option value=''>optional</option>
           <option value='1'>John</option>
           <option value='2'>James</option>

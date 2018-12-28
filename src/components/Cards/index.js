@@ -10,12 +10,16 @@ class Cards extends Component {
     super(props);
 
     this.state = {
+      statusId: '',
+      priorityId: '',
+      createdBy: '',
+      assignedTo: '',
       cardForm: 'hide',
-      hi: 'hi'
     }
 
-    console.log('Cards_id: ', this.props.cardId); // We have access to card id
+    console.log('card' + this.props.cardId + 'props :' + this.props); // We have access to card id
     this.showForm = this.showForm.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.deleteCardById = this.deleteCardById.bind(this);
     this.editCardById = this.editCardById.bind(this);
   }
@@ -29,6 +33,26 @@ class Cards extends Component {
     }
   }
 
+  handleInputChange(event) {
+    switch (event.target.name) {
+      // not changing title
+      case 'statusId':
+        this.setState({ statusId: event.target.value })
+        break;
+      case 'priorityId':
+        this.setState({ priorityId: event.target.value })
+        break;
+      case 'createdBy':
+        this.setState({ createdBy: event.target.value })
+        break;
+      case 'assignedTo':
+        this.setState({ assignedTo: event.target.value })
+        break;
+      default:
+        break;
+    }
+  }
+
   deleteCardById() {
     axios.delete(`/api/cards/${this.props.cardId}`)
       .then( response => {
@@ -39,7 +63,15 @@ class Cards extends Component {
   }
 
   editCardById() {
-    console.log('Editing form smoke testing!')
+    const data = {};
+    data.title = this.props.title;
+    data.body = '';
+    data.status_id = this.state.statusId;
+    data.priority_id = this.state.priorityId;
+    data.created_by = this.state.createdBy;
+    data.assigned_to = this.state.assignedTo;
+
+    console.log('Editing Card: ', data);
   }
 
   render() {
@@ -59,6 +91,7 @@ class Cards extends Component {
         <EditForm 
           title={ title } 
           cardForm={ this.state.cardForm }
+          changeHandler={this.handleInputChange} 
           formHandler={ this.editCardById }  
         />
       </div>

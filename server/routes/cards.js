@@ -52,8 +52,9 @@ router.post('/', (req, res) => {
 
 // WORKING on editing card information.
 router.put('/:id', (req, res) => {
+  console.log('Server Edit Smoke Test!');
+
   const id = req.params.id;
-  // Need a function to do this for both POST and PUT
   const title = req.body.title.trim();
   const body = req.body.body.trim();
   const priority_id = parseInt(req.body.priority_id);
@@ -70,7 +71,9 @@ router.put('/:id', (req, res) => {
       'status_id': status_id,
       'created_by': created_by,
       'assigned_to': assigned_to
-    }, {'patch': true})
+    }, 
+    {'method':'update'}, 
+    {'patch': true})
     .then(card => {
       return card.refresh({ withRelated: ['priority', 'status', 'createdBy', 'assignedTo']});
     })

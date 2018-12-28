@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { delCard } from '../../actions';
+import { delCard, editCard } from '../../actions';
 import axios from 'axios';
 import EditForm from './EditForm';
 import './Cards.css';
@@ -73,7 +73,8 @@ class Cards extends Component {
 
     axios.put(`/api/cards/${this.props.cardId}`, data)
       .then(response => {
-        console.log('Editing Card: ', response.data);
+        const card = response.data;
+        this.props.editCard(card);
       })
   }
 
@@ -112,6 +113,9 @@ const mapDispatchToProps = dispatch => {
   return {
     delCard: (card) => {
       dispatch(delCard(card));
+    },
+    editCard: (card) => {
+      dispatch(editCard(card));
     }
   }
 }

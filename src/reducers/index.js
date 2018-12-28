@@ -1,4 +1,4 @@
-import  { LOAD_CARDS, ADD_CARD, DEL_CARD } from '../actions';
+import  { LOAD_CARDS, ADD_CARD, DEL_CARD, EDIT_CARD } from '../actions';
 
 const initialState = [];
 
@@ -19,6 +19,14 @@ const cardsList = (state = initialState, action) => { // what is the action bein
       console.log('Index of NEW state: ', newState);
       
       return newState;
+    case EDIT_CARD:
+      let oldCardRemoved = state.filter(card => {
+        return card.id !== action.card.id;
+      });
+
+      console.log('oldCardRemoved: ', oldCardRemoved);
+
+      return [...oldCardRemoved, action.card];
     default:
       return state;
   }
